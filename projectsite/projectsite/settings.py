@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')!&=rh#6hk&l4s)z1h6bf9hfaif3z)cqsl9o_%y)$ij&(^+in_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', '127.0.0.1', 'svynry.pythonanywhere.com']
 
 
 # Application definition
