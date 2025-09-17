@@ -11,24 +11,59 @@
                     </div>
                     <br />
                     <div class="col-md-12 row">
-                        <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                        <div class="col-md-4">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'orgmember-list' %}" method="get">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Search members..." class="form-control" />
+                                    <input type="text" placeholder="Search members..." class="form-control" name="q" value="{{ request.GET.q }}"/>
                                     <div class="input-group-append">
-                                        <span class="input-group-text">
+                                        <button type="submit" class="input-group-text">
                                             <i class="la la-search search-icon"></i>
-                                        </span>
+                                        </button>
                                     </div>
                                 </div>
+                                {% if request.GET.sort_by %}
+                                    <input type="hidden" name="sort_by" value="{{ request.GET.sort_by }}">
+                                {% endif %}
                             </form>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <form method="get" class="form-inline">
+                                <div class="form-group mr-2">
+                                    <label for="sortSelect" class="mr-2">Sort by:</label>
+                                    <select class="form-control form-control-sm" id="sortSelect" name="sort_by">
+                                        <option value="student__lastname" {% if request.GET.sort_by == "student__lastname" %}selected{% endif %}>
+                                            Last Name (A-Z)
+                                        </option>
+                                        <option value="-student__lastname" {% if request.GET.sort_by == "-student__lastname" %}selected{% endif %}>
+                                            Last Name (Z-A)
+                                        </option>
+                                        <option value="student__firstname" {% if request.GET.sort_by == "student__firstname" %}selected{% endif %}>
+                                            First Name (A-Z)
+                                        </option>
+                                        <option value="-student__firstname" {% if request.GET.sort_by == "-student__firstname" %}selected{% endif %}>
+                                            First Name (Z-A)
+                                        </option>
+                                        <option value="date_joined" {% if request.GET.sort_by == "date_joined" %}selected{% endif %}>
+                                            Date Joined (Oldest)
+                                        </option>
+                                        <option value="-date_joined" {% if request.GET.sort_by == "-date_joined" %}selected{% endif %}>
+                                            Date Joined (Newest)
+                                        </option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm btn-rounded">Sort</button>
+                                {% if request.GET.q %}
+                                    <input type="hidden" name="q" value="{{ request.GET.q }}">
+                                {% endif %}
+                            </form>
+                        </div>
+                        <div class="col-md-4">
                             <div class="pull-right">
                                 <a href="{% url 'orgmember-add' %}" class="btn btn-success btn-rounded">Add Member</a>
                             </div>
                         </div>
                     </div>
+
                     <div class="card-body">
                         <table class="table table-striped mt-3">
                             <thead>
