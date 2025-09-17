@@ -25,11 +25,12 @@
                                     <input type="hidden" name="sort_by" value="{{ request.GET.sort_by }}">
                                 {% endif %}
                             </form>
-                        </div>
-                        <div class="col-md-4">
-                            <form method="get" class="form-inline">
-                                <div class="form-group mr-2">
-                                    <label for="sortSelect" class="mr-2">Sort by:</label>
+    
+                            <form method="get" class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <label for="sortSelect" class="col-form-label">Sort by</label>
+                                </div>
+                                <div class="col-auto">
                                     <select class="form-control form-control-sm" id="sortSelect" name="sort_by">
                                         <option value="student__lastname" {% if request.GET.sort_by == "student__lastname" %}selected{% endif %}>
                                             Last Name (A-Z)
@@ -51,12 +52,16 @@
                                         </option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm btn-rounded">Sort</button>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary btn-sm btn-rounded">Sort</button>
+                                </div>
                                 {% if request.GET.q %}
                                     <input type="hidden" name="q" value="{{ request.GET.q }}">
                                 {% endif %}
                             </form>
                         </div>
+                        
+                        <!-- Add Button -->
                         <div class="col-md-4">
                             <div class="pull-right">
                                 <a href="{% url 'orgmember-add' %}" class="btn btn-success btn-rounded">Add Member</a>
