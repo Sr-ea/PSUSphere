@@ -12,6 +12,7 @@ from studentorg import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")), # allauth routes
     path('', views.HomePageView.as_view(), name='home'),
     path('index.html', HomePageView.as_view(), name='index'),
 
