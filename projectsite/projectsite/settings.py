@@ -141,7 +141,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/accounts/login/'    # where @login_required will send users
-LOGIN_REDIRECT_URL = '/'    # where to go after successful login
+LOGIN_REDIRECT_URL = '/index.html'    # where to go after successful login
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # after logout, go back to login
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'    # where to redirect after logout
 ACCOUNT_LOGOUT_ON_GET = True    # logout immediately on GET

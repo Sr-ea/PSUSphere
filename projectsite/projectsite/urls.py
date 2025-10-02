@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect 
 from studentorg.views import (
     HomePageView,
     OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView,
@@ -10,10 +11,13 @@ from studentorg.views import (
 )
 from studentorg import views
 
+def redirect_to_login(request):
+    return redirect("account_login")
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")), # allauth routes
-    path('', views.HomePageView.as_view(), name='home'),
+    path('', redirect_to_login, name='root'),
     path('index.html', HomePageView.as_view(), name='index'),
 
     path('organization_list', OrganizationList.as_view(), name='organization-list'),
