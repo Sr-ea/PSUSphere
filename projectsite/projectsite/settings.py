@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
-    "studentorg",
-    "widget_tweaks",
+    'rest_framework',
+    'api',
+    'rest_framework.authtoken',
+    'studentorg',
+    'widget_tweaks',
 ]
 SITE_ID = 2
 
@@ -157,3 +160,13 @@ if "pythonanywhere" in socket.gethostname():
     SITE_ID = 3  # production site (psusphere.pythonanywhere.com)
 else:
     SITE_ID = 2  # local site (127.0.0.1:8000)
+
+
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': [
+      'rest_framework.authentication.TokenAuthentication',
+  ],
+  'DEFAULT_PERMISSION_CLASSES': [
+      'rest_framework.permissions.IsAuthenticated',
+  ],
+}
